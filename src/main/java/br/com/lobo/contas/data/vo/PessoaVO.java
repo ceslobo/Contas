@@ -2,15 +2,21 @@ package br.com.lobo.contas.data.vo;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dozermapper.core.Mapping;
+
 
 public class PessoaVO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-
-	private Long id;
+	@Mapping("id")
+	private Long key;
 	private String nome;
 	private String login;
+	
+	@JsonIgnore
 	private String senha;
 	
 	
@@ -18,27 +24,18 @@ public class PessoaVO implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PessoaVO(Long id, String nome, String login, String senha) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-	}
-	public PessoaVO(String nome, String login, String senha) {
-		super();
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-	}
 	
-	
-	public Long getId() {
-		return id;
+
+	public Long getKey() {
+		return key;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+
+	public void setKey(Long key) {
+		this.key = key;
 	}
+
+
 	public String getNome() {
 		return nome;
 	}
@@ -57,29 +54,33 @@ public class PessoaVO implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		int result = super.hashCode();
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaVO other = (PessoaVO) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (key == null) {
+			if (other.key != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!key.equals(other.key))
 			return false;
 		if (login == null) {
 			if (other.login != null)
@@ -98,6 +99,8 @@ public class PessoaVO implements Serializable{
 			return false;
 		return true;
 	}
+
+	
 
 	
 

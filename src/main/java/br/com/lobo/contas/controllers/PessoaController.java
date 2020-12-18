@@ -1,5 +1,6 @@
 package br.com.lobo.contas.controllers;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,8 @@ public class PessoaController {
 
 	@GetMapping("/id/{id}")
 	public PessoaVO findById(@PathVariable("id") Long id) {
-		return pessoaService.findById(id);
+		PessoaVO pessoa = pessoaService.findById(id);
+		return pessoa;
 	}
 	
 	@PostMapping

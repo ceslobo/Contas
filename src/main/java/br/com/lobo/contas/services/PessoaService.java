@@ -17,7 +17,7 @@ public class PessoaService {
 	
 	public PessoaVO findByLogin(String login) {
 		PessoaVO pessoa = new PessoaVO();
-		pessoa.setId(1L);
+		pessoa.setKey(1L);
 		pessoa.setLogin(login);
 		pessoa.setNome("Carlos Lobo");
 		pessoa.setSenha("ffgghhrrt!!@@##");
