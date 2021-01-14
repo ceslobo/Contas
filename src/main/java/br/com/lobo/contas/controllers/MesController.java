@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value="Controller de Mês", description="Descrição para Controller de Mês", tags= {"Mês"})
 @RestController
-@RequestMapping("/mes")
+@RequestMapping("/api/mes")
 public class MesController {
 
 	@Autowired

@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.lobo.contas.exceptions.ExceptionResponse;
+import br.com.lobo.contas.exceptions.InvalidJwtAuthenticationException;
 
 @ControllerAdvice
 @RestController
@@ -20,6 +21,12 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception ex, WebRequest request) {
 		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler(InvalidJwtAuthenticationException.class)
+	public final ResponseEntity<ExceptionResponse> InvalidJwtAuthenticationException(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 	
 }
