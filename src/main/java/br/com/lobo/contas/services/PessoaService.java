@@ -1,5 +1,7 @@
 package br.com.lobo.contas.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,10 @@ public class PessoaService {
 	public PessoaVO findById(Long id) {
 		Pessoa entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Não existe registro para este Id"));
 		return DozerConverter.parseObject(entity, PessoaVO.class);
+	}
+	
+	public List<PessoaVO> findAll() {
+		return DozerConverter.parseListObjects(repository.findAll(), PessoaVO.class);
 	}
 	
 	public PessoaVO create (PessoaVO pessoa) {
