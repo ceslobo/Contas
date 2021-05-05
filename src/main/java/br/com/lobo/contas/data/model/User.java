@@ -38,6 +38,12 @@ public class User implements UserDetails, Serializable {
 	@Column(name="password")
 	private String password;
 	
+	@Column(name="email")
+	private String email;
+	
+	@Column(name="endereco")
+	private String endereco;
+	
 	@Column(name="account_non_expired")
 	private Boolean accountNonExpired;
 	
@@ -202,6 +208,32 @@ public class User implements UserDetails, Serializable {
 		// TODO Auto-generated method stub
 		return this.enabled;
 	}
+	
+	
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
 
 
@@ -212,7 +244,9 @@ public class User implements UserDetails, Serializable {
 		result = prime * result + ((accountNonExpired == null) ? 0 : accountNonExpired.hashCode());
 		result = prime * result + ((accountNonLocked == null) ? 0 : accountNonLocked.hashCode());
 		result = prime * result + ((credentialsNonExpired == null) ? 0 : credentialsNonExpired.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((fullname == null) ? 0 : fullname.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
@@ -247,10 +281,20 @@ public class User implements UserDetails, Serializable {
 				return false;
 		} else if (!credentialsNonExpired.equals(other.credentialsNonExpired))
 			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
 		if (enabled == null) {
 			if (other.enabled != null)
 				return false;
 		} else if (!enabled.equals(other.enabled))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
 			return false;
 		if (fullname == null) {
 			if (other.fullname != null)
@@ -279,6 +323,10 @@ public class User implements UserDetails, Serializable {
 			return false;
 		return true;
 	}
+
+
+
+
 
 	
 }
